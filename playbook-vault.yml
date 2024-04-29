@@ -1,0 +1,8 @@
+﻿---
+- hosts: "{{ stand }}"
+  user: stravnik
+  become: true
+  become_method: su
+  become_user: root
+  roles:
+    - vault

@@ -1,0 +1,25 @@
+﻿kube_servers:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  hosts:
+    server01:
+      ansible_host: 201-K8s
+      ansible_ssh_host: 192.168.1.201
+    server02:
+      ansible_host: 202-K8s
+      ansible_ssh_host: 192.168.1.202
+    server03:
+      ansible_host: 203-K8s
+      ansible_ssh_host: 192.168.1.203
+
+  children:
+    master:
+      hosts:
+        server01:
+        server02:
+        server03:
+    worker:
+      hosts:
+        server01:
+        server02:
+        server03:

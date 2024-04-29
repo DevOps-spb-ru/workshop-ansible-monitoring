@@ -1,0 +1,7 @@
+---
+- name: Установка node_exporter
+  hosts: "{{ stand }}"
+  user: stravnik
+  become: true
+  roles:
+    - role: node_exporter

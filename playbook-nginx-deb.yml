@@ -1,0 +1,14 @@
+---
+- hosts: "{{ stand }}"
+  become:
+    true
+  become_method:
+    sudo
+  become_user:
+    root
+  remote_user:
+    stravnik
+  vars:
+    nginx_user: www-data
+  roles:
+    - nginx

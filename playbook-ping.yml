@@ -1,0 +1,7 @@
+---
+- name: Проверка подключения
+  remote_user: stravnik
+  hosts: "{{ stand }}"
+  tasks:
+   - name: Проверка пинга
+     ping:

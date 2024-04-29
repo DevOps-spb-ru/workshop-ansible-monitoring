@@ -1,0 +1,8 @@
+﻿---
+- hosts: "{{ stand }}"
+  user: stravnik
+  become: true
+  become_method: sudo
+  become_user: root
+  roles:
+    - grafana

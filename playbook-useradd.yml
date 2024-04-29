@@ -1,0 +1,14 @@
+---
+  - hosts: "{{ stand }}"
+    become: yes
+    tasks:
+    - name: Add user
+      user: name="{{ user_name }}" groups="{{ user_group }}" shell=/bin/bash password=$6$nUyR/uGrM$MgtEOOoWCbkwNjBJdpAfpXNzChgvLOA3K7YEYPe7UMUr4T/W3UWcVYKPu208rgiRM2eIZaYre7DKVMToZ46am0
+    - name: Add user to sudoers
+      copy:
+        dest: "/etc/sudoers.d/{{ user_name }}"
+        content: "{{ user_name }} ALL=(ALL) NOPASSWD:ALL"
+    - name: Add key
+      authorized_key: user="{{ user_name }}" key="{{ lookup('file', "/root/.ssh/id_rsa2.pub")}}"
+    - name: Set permissions
+      shell: "chmod 750 /home/{{ user_name }}"

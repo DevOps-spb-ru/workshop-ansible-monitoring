@@ -1,0 +1,7 @@
+---
+# tasks file for vault
+- name: Prepare System
+  include_tasks: tasks/prepare.yml
+
+- name: Install Vault
+  include_tasks: tasks/install_vault.yml

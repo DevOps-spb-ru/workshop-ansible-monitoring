@@ -1,0 +1,18 @@
+---
+- hosts: "{{ stand }}"
+  become:
+    true
+  become_method:
+    su
+  become_user:
+    root
+  remote_user:
+    stravnik
+  vars:
+    nginx_user: nginx
+  roles:
+    - role: epel
+      tags: epel
+    - role: nginx
+      tags: nginx
+# Как запустить тег: ansible-playbook --tags <tags_name> <playbook>.yml
